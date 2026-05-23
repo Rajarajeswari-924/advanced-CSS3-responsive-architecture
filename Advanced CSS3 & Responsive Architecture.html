@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grid + Flexbox + Dark Mode</title>
+<style>
+:root{
+  --bg:#fff;
+  --text:#222;
+  --card:#f3f3f3;
+}
+
+.dark{
+  --bg:#121212;
+  --text:#fff;
+  --card:#1e1e1e;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:Arial;
+  background:var(--bg);
+  color:var(--text);
+  transition:.3s;
+}
+
+.container{
+  display:grid;
+  gap:15px;
+  padding:15px;
+}
+
+.nav,
+.cards{
+  display:flex;
+  gap:15px;
+}
+
+.nav{
+  justify-content:space-between;
+  align-items:center;
+}
+
+.cards{
+  flex-wrap:wrap;
+}
+
+.card{
+  flex:1 1 200px;
+  background:var(--card);
+  padding:20px;
+  border-radius:10px;
+}
+
+button{
+  padding:8px 15px;
+  border:none;
+  border-radius:5px;
+  cursor:pointer;
+}
+
+@media(min-width:768px){
+  .container{
+    grid-template-columns:220px 1fr;
+  }
+
+  .sidebar{
+    grid-row:span 2;
+  }
+}
+</style>
+</head>
+<body>
+	<div class="container">
+	<aside class="card sidebar">
+		<h2>Sidebar</h2>
+		<p>Menu Items</p>
+	</aside>
+	<nav class="card nav">
+    	<h2>My Website</h2>
+    	<button onclick="document.body.classList.toggle('dark')">
+      	Toggle Mode
+    	</button>
+	</nav>
+	<main class="cards">
+    		<div class="card">Card 1</div>
+    		<div class="card">Card 2</div>
+    		<div class="card">Card 3</div>
+	</main>
+	</div>
+</body>
+</html>
